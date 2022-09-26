@@ -54,3 +54,9 @@ public class WorkflowMonitor : MonoBehaviour
 ```
 
 Hit play in the Unity editor and you should see the timer output logged to the Console.
+
+This is a very minimal example but demonstrates the basic workflow for using the Bonsai interface. 
+
+- First a workflow is created with some data that we want to pass to Unity. Generally it is useful to expose this data with a Subject like PublishSubject so that we can explicitly name the data sequence, but any of the Bonsai operators can be linked to in Unity.
+- The workflow is saved and converted to a scriptable object, which can then be used by a game object with the 'BonsaiWorkflow' component. This component also takes care of managing subscriptions and starting the workflow when the Unity scene is initalised.
+- Other Unity scripts interact with the workflow via the 'InjectSubscribe' method of the 'BonsaiWorkflow' component. This method takes a name string and type to locate the desired node in the workflow, as well as an Action that defines what Unity should do with data that arrives from this node (in this case just log the value to the console). These 'InjectSubscribe' calls should usually be defined in the Start method of a MonoBehaviour.
