@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12e75434ce01d27418bd8bdda2586480, type: 3}
+  m_Name: timer-workflow.bonsai
+  m_EditorClassIdentifier: 
+  WorkflowBuilderData: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<WorkflowBuilder
+    Version=\"2.6.1\"\r\n                 xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n                
+    xmlns:rx=\"clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core\"\r\n                
+    xmlns=\"https://bonsai-rx.org/2018/workflow\">\r\n  <Workflow>\r\n    <Nodes>\r\n     
+    <Expression xsi:type=\"Combinator\">\r\n        <Combinator xsi:type=\"rx:Timer\">\r\n         
+    <rx:DueTime>PT0S</rx:DueTime>\r\n          <rx:Period>PT1S</rx:Period>\r\n       
+    </Combinator>\r\n      </Expression>\r\n      <Expression xsi:type=\"Combinator\">\r\n       
+    <Combinator xsi:type=\"rx:Take\">\r\n          <rx:Count>10</rx:Count>\r\n       
+    </Combinator>\r\n      </Expression>\r\n      <Expression xsi:type=\"PublishSubject\">\r\n       
+    <Name>TimerOutput</Name>\r\n      </Expression>\r\n      <Expression xsi:type=\"SubscribeSubject\">\r\n       
+    <Name>TimerOutput</Name>\r\n      </Expression>\r\n    </Nodes>\r\n    <Edges>\r\n     
+    <Edge From=\"0\" To=\"1\" Label=\"Source1\" />\r\n      <Edge From=\"1\" To=\"2\"
+    Label=\"Source1\" />\r\n    </Edges>\r\n  </Workflow>\r\n</WorkflowBuilder>"
