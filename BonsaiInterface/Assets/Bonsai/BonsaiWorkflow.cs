@@ -118,6 +118,19 @@ public class BonsaiWorkflow : MonoBehaviour
         SubscriptionInjections.Add(new SubscriptionInjection { TargetName = targetNode, TargetType = targetType, Action = action });
     }
 
+    // TODO - we should only be able to inject onto externalizedmapping or propertymapping (or in future e.g. UnitySubject)
+    public void InjectInput<T>(Source<T> source)
+    {
+        foreach (var node in WorkflowBuilder.Workflow)
+        {
+            if (ExpressionBuilder.Unwrap(node.Value).GetType() == typeof(ExternalizedMappingBuilder)) // TODO - right now hard coded to find the externalized mapping
+            {
+                var sourceNodeBuilder = new CombinatorBuilder { Combinator = source };
+                InputInjections.Add(new InputInjection { From = sourceNodeBuilder, To = node });
+            }
+        }
+    }
+
     private struct SubscriptionInjection
     {
         public string TargetName;
