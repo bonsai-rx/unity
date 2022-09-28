@@ -22,7 +22,7 @@ public class InputInjector : MonoBehaviour
         Device = new DataDevice();
         Source = new IntegerSource { Device = this.Device };
 
-        Workflow.InjectInput(Source);
+        Workflow.InjectInput(Source, "IntInput");
 
         Workflow.InjectSubscription("IntValue", typeof(PublishSubjectBuilder), val => { Debug.Log(val); });
     }
