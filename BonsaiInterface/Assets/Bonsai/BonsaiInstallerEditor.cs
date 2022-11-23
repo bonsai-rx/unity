@@ -92,15 +92,8 @@ public class BonsaiInstallerEditor : Editor
         foreach (string fromFile in allQueries)
         {
             string toFile = $"{rootPath}/Assets/Packages/{Path.GetFileName(fromFile)}";
-            if (!File.Exists(toFile))
-            {
-                UnityEngine.Debug.Log($"Copying {fromFile} to {toFile}");
-                File.Copy(fromFile, toFile);
-            }
-            else
-            {
-                UnityEngine.Debug.LogWarning($"File {toFile} already exists. Skipping file copy.");
-            }
+            UnityEngine.Debug.Log($"Copying {fromFile} to {toFile}");
+            File.Copy(fromFile, toFile, true);
         }
 
         EditorUtility.DisplayDialog("Bonsai", "Package consolidation complete. See debug console for details.", "OK");
