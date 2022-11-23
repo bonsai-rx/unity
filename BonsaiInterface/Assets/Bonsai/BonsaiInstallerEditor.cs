@@ -24,7 +24,7 @@ public class BonsaiInstallerEditor : Editor
         if (!File.Exists(rootPath + "/Bonsai.zip"))
         {
             WebClient client = new WebClient();
-            client.DownloadFile("https://github.com/bonsai-rx/bonsai/releases/download/2.6.3/Bonsai.zip", rootPath + "/Bonsai.zip");
+            client.DownloadFile("https://github.com/bonsai-rx/bonsai/releases/download/2.7/Bonsai.zip", rootPath + "/Bonsai.zip");
         }
         else
         {
