@@ -44,9 +44,9 @@ public class BonsaiInstallerEditor : Editor
 
         if (EditorUtility.DisplayDialog("Install Bonsai", "The Bonsai archive will now be extracted and installed. Please close the Bonsai editor window after initialization to complete the install process.", "OK"))
         {
-            if (Directory.Exists(rootPath + "/Bonsai"))
+            if (File.Exists(rootPath + "/Bonsai/Bonsai.exe"))
             {
-                EditorUtility.DisplayDialog("Error", "A Bonsai directory already exists in the project.", "OK");
+                EditorUtility.DisplayDialog("Error", "A Bonsai installation already exists in the project.", "OK");
             }
             else
             {
