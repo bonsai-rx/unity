@@ -14,6 +14,7 @@ using Bonsai.Dag;
 public class BonsaiWorkflow : MonoBehaviour
 {
     public BonsaiWorkflowAsset BonsaiWorkflowAsset;
+    public bool AutoStart = false;
 
     private WorkflowBuilder WorkflowBuilder;
     private IObservable<System.Reactive.Unit> WorkflowRuntime;
@@ -32,7 +33,10 @@ public class BonsaiWorkflow : MonoBehaviour
 
     private void Start()
     {
-        StartWorkflow();
+        if (AutoStart)
+        {
+            StartWorkflow();
+        }
     }
 
     private void StartWorkflow()

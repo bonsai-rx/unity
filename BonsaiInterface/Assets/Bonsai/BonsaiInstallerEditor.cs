@@ -24,7 +24,7 @@ public class BonsaiInstallerEditor : Editor
         if (!File.Exists(rootPath + "/Bonsai.zip"))
         {
             WebClient client = new WebClient();
-            client.DownloadFile("https://github.com/bonsai-rx/bonsai/releases/download/2.6.3/Bonsai.zip", rootPath + "/Bonsai.zip");
+            client.DownloadFile("https://github.com/bonsai-rx/bonsai/releases/download/2.7/Bonsai.zip", rootPath + "/Bonsai.zip");
         }
         else
         {
@@ -92,15 +92,8 @@ public class BonsaiInstallerEditor : Editor
         foreach (string fromFile in allQueries)
         {
             string toFile = $"{rootPath}/Assets/Packages/{Path.GetFileName(fromFile)}";
-            if (!File.Exists(toFile))
-            {
-                UnityEngine.Debug.Log($"Copying {fromFile} to {toFile}");
-                File.Copy(fromFile, toFile);
-            }
-            else
-            {
-                UnityEngine.Debug.LogWarning($"File {toFile} already exists. Skipping file copy.");
-            }
+            UnityEngine.Debug.Log($"Copying {fromFile} to {toFile}");
+            File.Copy(fromFile, toFile, true);
         }
 
         EditorUtility.DisplayDialog("Bonsai", "Package consolidation complete. See debug console for details.", "OK");
